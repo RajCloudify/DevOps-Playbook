@@ -1,0 +1,13 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Simple EC2 deployment for testing
+
+Resources:
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.nano
+      ImageId: ami-0f5ee92e2d63afc18   # Amazon Linux 2 AMI for ap-south-1
+      Tags:
+        - Key: Raj-developer-test
+          Value: Test-CloudFormation-Instance
+
