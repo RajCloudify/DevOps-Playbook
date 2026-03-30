@@ -29,7 +29,6 @@ This playbook is designed to:
 │   └── 📄 t2_nano.yml
 └── 📁 S3-Static-test/
     └── 📄 index.html
-📄 file1
 📁 infra-labs/
 └── 📁 Terraform-Import/
     ├── 📄 main.tf
@@ -39,8 +38,6 @@ This playbook is designed to:
 ```
 
 > *This section is synced & automated with the DevOps Playbook.*
-
-
 
 
 ## 📋 Repository Contents
