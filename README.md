@@ -19,17 +19,38 @@ This playbook is designed to:
 
 
 
-## Contents
-- **AWS_Cloud_Practioner_Dump/**
-  - **CloudFormation-test/**
-    - t2_nano.yml
-  - **S3-Static-test/**
-    - index.html
-- file1
-- **infra-labs/**
-  - **Terraform-Import/**
-    - main.tf
-    - README.md
-- README.md
-- update-readme.sh
-This section is auto-generated. Do not edit manually.
+
+
+## 📋 Repository Contents
+
+📁 **AWS_Cloud_Practioner_Dump/**
+├── 📁 **CloudFormation-test/**
+│   └── 📄 t2_nano.yml
+└── 📁 **S3-Static-test/**
+    └── 📄 index.html
+📄 file1
+📁 **infra-labs/**
+└── 📁 **Terraform-Import/**
+    ├── 📄 main.tf
+    └── 📄 README.md
+📄 README.md
+📄 update-readme.sh
+
+> *This section is auto-generated. Do not edit manually.*
+
+
+## 📋 Repository Contents
+📁 **AWS_Cloud_Practioner_Dump/**
+├── 📁 **CloudFormation-test/**
+│   └── 📄 t2_nano.yml
+├── 📁 **S3-Static-test/**
+│   └── 📄 index.html
+📁 **infra-labs/**
+└── 📁 **Terraform-Import/**
+    ├── 📄 main.tf
+    └── 📄 README.md
+📄 file1
+📄 README.md
+📄 update-readme.sh
+
+> *This section is auto-generated. Do not edit manually.*

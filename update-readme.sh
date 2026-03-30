@@ -13,17 +13,16 @@ generate_tree() {
     local path="$1"
     local depth="${2:-0}"
     local max_depth=3
+    local prefix="$3"
     
     if [ "$depth" -ge "$max_depth" ]; then
         return
     fi
     
-    local indent=""
-    for ((i = 0; i < depth; i++)); do
-        indent+="  "
-    done
-    
     # List directories first, then files (sorted)
+    local dirs=()
+    local files=()
+    
     for item in $(ls -1 "$path" 2>/dev/null | sort); do
         # Skip git and node_modules
         if [[ "$item" == ".git" || "$item" == ".github" || "$item" == "node_modules" ]]; then
@@ -31,19 +30,70 @@ generate_tree() {
         fi
         
         local full_path="$path/$item"
-        
         if [ -d "$full_path" ]; then
-            echo "${indent}- **${item}/**"
-            generate_tree "$full_path" $((depth + 1))
+            dirs+=("$item")
         elif [ -f "$full_path" ]; then
-            echo "${indent}- $item"
+            files+=("$item")
+        fi
+    done
+    
+    # Process directories first
+    for dir in "${dirs[@]}"; do
+        local full_path="$path/$dir"
+        local is_last_dir=false
+        
+        # Check if this is the last directory
+        if [ ${#dirs[@]} -eq 1 ] && [ ${#files[@]} -eq 0 ]; then
+            is_last_dir=true
+        fi
+        
+        if [ "$depth" -eq 0 ]; then
+            echo "📁 **$dir/**"
+        else
+            if [ "$is_last_dir" = true ]; then
+                echo "${prefix}└── 📁 **$dir/**"
+            else
+                echo "${prefix}├── 📁 **$dir/**"
+            fi
+        fi
+        
+        # Recurse into subdirectory
+        local new_prefix=""
+        if [ "$depth" -gt 0 ]; then
+            if [ "$is_last_dir" = true ]; then
+                new_prefix="${prefix}    "
+            else
+                new_prefix="${prefix}│   "
+            fi
+        fi
+        
+        generate_tree "$full_path" $((depth + 1)) "$new_prefix"
+    done
+    
+    # Process files
+    for i in "${!files[@]}"; do
+        local file="${files[$i]}"
+        local is_last_file=false
+        
+        if [ $i -eq $((${#files[@]} - 1)) ]; then
+            is_last_file=true
+        fi
+        
+        if [ "$depth" -eq 0 ]; then
+            echo "📄 $file"
+        else
+            if [ "$is_last_file" = true ]; then
+                echo "${prefix}└── 📄 $file"
+            else
+                echo "${prefix}├── 📄 $file"
+            fi
         fi
     done
 }
 
 # Generate the Contents section
 CONTENTS_SECTION=$(cat <<'EOF'
-## Contents
+## 📋 Repository Contents
 
 EOF
 )
@@ -52,8 +102,9 @@ EOF
 CONTENTS_SECTION+=$'\n'
 CONTENTS_SECTION+="$(generate_tree "$REPO_ROOT" 0)"
 CONTENTS_SECTION+=$'\n'
+CONTENTS_SECTION+=$'\n'
 CONTENTS_SECTION+=$(cat <<'EOF'
-This section is auto-generated. Do not edit manually.
+> *This section is auto-generated. Do not edit manually.*
 EOF
 )
 
