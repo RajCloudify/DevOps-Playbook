@@ -25,6 +25,8 @@ This playbook is designed to:
 
 
 
+
+
 <!-- AUTO-GENERATED CONTENT START -->
 ## 📋 Repository Tree
 ```\n📁 DevOps-Playbook/\n📁 AWS_Cloud_Practioner_Dump/
@@ -33,9 +35,11 @@ This playbook is designed to:
 └── 📁 S3-Static-test/
     └── 📄 index.html
 📁 infra-labs/
-└── 📁 Terraform-Import/
+└── 📁 Terraform-Import-1.0/
     ├── 📄 main.tf
-    └── 📄 README.md
+    ├── 📄 README.md
+    ├── 📄 terraform.tfstate
+    └── 📄 terraform.tfstate.backup
 📄 README.md
 📄 update-readme.sh\n```\n
 > *This section is synced & automated with the DevOps Playbook.*
