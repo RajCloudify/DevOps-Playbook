@@ -38,24 +38,9 @@ This playbook is designed to:
 📄 update-readme.sh
 ```
 
-> *This section is auto-generated. Do not edit manually.*
+> *This section is synced & automated with the DevOps Playbook.*
 
 
-## 📋 Repository Contents
-📁 **AWS_Cloud_Practioner_Dump/**
-├── 📁 **CloudFormation-test/**
-│   └── 📄 t2_nano.yml
-├── 📁 **S3-Static-test/**
-│   └── 📄 index.html
-📁 **infra-labs/**
-└── 📁 **Terraform-Import/**
-    ├── 📄 main.tf
-    └── 📄 README.md
-📄 file1
-📄 README.md
-📄 update-readme.sh
-
-> *This section is auto-generated. Do not edit manually.*
 
 
 ## 📋 Repository Contents
@@ -68,7 +53,6 @@ This playbook is designed to:
 └── 📁 Terraform-Import/
     ├── 📄 main.tf
     └── 📄 README.md
-📄 file1
 📄 README.md
 📄 update-readme.sh
 
