@@ -85,8 +85,12 @@ generate_tree() {
     done
 }
 
+AUTO_START="<!-- AUTO-GENERATED CONTENT START -->"
+AUTO_END="<!-- AUTO-GENERATED CONTENT END -->"
+
 # Generate the Contents section
-CONTENTS_SECTION=$(cat <<'EOF'
+CONTENTS_SECTION=$(cat <<EOF
+$AUTO_START
 ## 📋 Repository Contents
 
 EOF
@@ -95,10 +99,10 @@ EOF
 # Add directory tree
 CONTENTS_SECTION+=$'\n'
 CONTENTS_SECTION+="$(generate_tree "$REPO_ROOT" 0)"
-CONTENTS_SECTION+=$'\n'
-CONTENTS_SECTION+=$'\n'
-CONTENTS_SECTION+=$(cat <<'EOF'
-> *This section is auto-generated. Do not edit manually.*
+CONTENTS_SECTION+=$'\n\n'
+CONTENTS_SECTION+=$(cat <<EOF
+> *This section is synced & automated with the DevOps Playbook.*
+$AUTO_END
 EOF
 )
 
@@ -111,11 +115,18 @@ fi
 # Create temporary file
 TEMP_FILE=$(mktemp)
 
-# Extract content before Contents section
-awk '
-BEGIN { found = 0 }
-/^## Contents/ { found = 1; exit }
-{ print }
+# Remove any existing generated Contents sections
+awk -v start="$AUTO_START" -v end="$AUTO_END" '
+BEGIN { skip=0; section=0 }
+{
+    if ($0 == start) { skip=1; next }
+    if (skip && $0 == end) { skip=0; next }
+    if (!skip && $0 ~ /^##.*Repository Contents/) { section=1; next }
+    if (!skip && $0 ~ /^##.*Contents/) { section=1; next }
+    if (section && $0 ~ /^## /) { section=0; print; next }
+    if (section) next
+    if (!skip) print
+}
 ' "$README_PATH" > "$TEMP_FILE"
 
 # Remove trailing blank lines

@@ -21,9 +21,10 @@ This playbook is designed to:
 
 
 
-## 📋 Repository Contents
 
-```
+
+<!-- AUTO-GENERATED CONTENT START -->
+## 📋 Repository Contents
 📁 AWS_Cloud_Practioner_Dump/
 ├── 📁 CloudFormation-test/
 │   └── 📄 t2_nano.yml
@@ -35,22 +36,6 @@ This playbook is designed to:
     └── 📄 README.md
 📄 README.md
 📄 update-readme.sh
-```
 
 > *This section is synced & automated with the DevOps Playbook.*
-
-
-## 📋 Repository Contents
-📁 AWS_Cloud_Practioner_Dump/
-├── 📁 CloudFormation-test/
-│   └── 📄 t2_nano.yml
-└── 📁 S3-Static-test/
-    └── 📄 index.html
-📁 infra-labs/
-└── 📁 Terraform-Import/
-    ├── 📄 main.tf
-    └── 📄 README.md
-📄 README.md
-📄 update-readme.sh
-
-> *This section is auto-generated. Do not edit manually.*
+<!-- AUTO-GENERATED CONTENT END -->
