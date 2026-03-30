@@ -14,21 +14,21 @@ generate_tree() {
     local depth="${2:-0}"
     local max_depth=3
     local prefix="$3"
-    
+
     if [ "$depth" -ge "$max_depth" ]; then
         return
     fi
-    
+
     # List directories first, then files (sorted)
     local dirs=()
     local files=()
-    
+
     for item in $(ls -1 "$path" 2>/dev/null | sort); do
         # Skip git and node_modules
         if [[ "$item" == ".git" || "$item" == ".github" || "$item" == "node_modules" ]]; then
             continue
         fi
-        
+
         local full_path="$path/$item"
         if [ -d "$full_path" ]; then
             dirs+=("$item")
@@ -36,49 +36,43 @@ generate_tree() {
             files+=("$item")
         fi
     done
-    
+
     # Process directories first
-    for dir in "${dirs[@]}"; do
+    local dir_count=${#dirs[@]}
+    for i in "${!dirs[@]}"; do
+        local dir="${dirs[$i]}"
         local full_path="$path/$dir"
-        local is_last_dir=false
-        
-        # Check if this is the last directory
-        if [ ${#dirs[@]} -eq 1 ] && [ ${#files[@]} -eq 0 ]; then
-            is_last_dir=true
-        fi
-        
+        local is_last=$([ $i -eq $((dir_count - 1)) ] && [ ${#files[@]} -eq 0 ] && echo true || echo false)
+
         if [ "$depth" -eq 0 ]; then
-            echo "📁 **$dir/**"
+            echo "📁 $dir/"
         else
-            if [ "$is_last_dir" = true ]; then
-                echo "${prefix}└── 📁 **$dir/**"
+            if [ "$is_last" = true ]; then
+                echo "${prefix}└── 📁 $dir/"
             else
-                echo "${prefix}├── 📁 **$dir/**"
+                echo "${prefix}├── 📁 $dir/"
             fi
         fi
-        
+
         # Recurse into subdirectory
         local new_prefix=""
         if [ "$depth" -gt 0 ]; then
-            if [ "$is_last_dir" = true ]; then
+            if [ "$is_last" = true ]; then
                 new_prefix="${prefix}    "
             else
                 new_prefix="${prefix}│   "
             fi
         fi
-        
+
         generate_tree "$full_path" $((depth + 1)) "$new_prefix"
     done
-    
+
     # Process files
+    local file_count=${#files[@]}
     for i in "${!files[@]}"; do
         local file="${files[$i]}"
-        local is_last_file=false
-        
-        if [ $i -eq $((${#files[@]} - 1)) ]; then
-            is_last_file=true
-        fi
-        
+        local is_last_file=$([ $i -eq $((file_count - 1)) ] && echo true || echo false)
+
         if [ "$depth" -eq 0 ]; then
             echo "📄 $file"
         else
