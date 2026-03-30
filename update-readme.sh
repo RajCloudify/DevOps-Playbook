@@ -45,7 +45,6 @@ generate_tree() {
 CONTENTS_SECTION=$(cat <<'EOF'
 ## Contents
 
-```
 EOF
 )
 
@@ -54,8 +53,6 @@ CONTENTS_SECTION+=$'\n'
 CONTENTS_SECTION+="$(generate_tree "$REPO_ROOT" 0)"
 CONTENTS_SECTION+=$'\n'
 CONTENTS_SECTION+=$(cat <<'EOF'
-```
-
 This section is auto-generated. Do not edit manually.
 EOF
 )

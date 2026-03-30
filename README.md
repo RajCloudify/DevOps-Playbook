@@ -17,9 +17,9 @@ This playbook is designed to:
 
 
 
-## Contents
 
-```
+
+## Contents
 - **AWS_Cloud_Practioner_Dump/**
   - **CloudFormation-test/**
     - t2_nano.yml
@@ -32,6 +32,4 @@ This playbook is designed to:
     - README.md
 - README.md
 - update-readme.sh
-```
-
 This section is auto-generated. Do not edit manually.
