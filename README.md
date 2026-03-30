@@ -13,17 +13,25 @@ This playbook is designed to:
 - **Support Certification Preparation**: Include practice dumps and study resources for cloud and DevOps certifications
 - **Build Practical Examples**: Maintain working code samples and configurations for real-world DevOps scenarios
 
+
+
+
+
 ## Contents
 
-- **AWS Cloud Practitioner Dump**: Practice materials and exam preparations for AWS Cloud Practitioner certification
-- **CloudFormation Templates**: Infrastructure as Code examples using AWS CloudFormation
-- **S3 Static Website**: Sample static website hosting configuration on AWS S3
-- Additional DevOps tools, scripts, and configurations
+```
+- **AWS_Cloud_Practioner_Dump/**
+  - **CloudFormation-test/**
+    - t2_nano.yml
+  - **S3-Static-test/**
+    - index.html
+- file1
+- **infra-labs/**
+  - **Terraform-Import/**
+    - main.tf
+    - README.md
+- README.md
+- update-readme.sh
+```
 
-## How to Use
-
-Navigate through the respective folders to explore specific topics, access practice materials, and reference code samples. Each subfolder contains relevant documentation and hands-on examples.
-
----
-
-*This is an ongoing project reflecting continuous learning and professional development in the DevOps field.*
+This section is auto-generated. Do not edit manually.
