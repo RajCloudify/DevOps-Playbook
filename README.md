@@ -23,9 +23,11 @@ This playbook is designed to:
 
 
 
+
+
 <!-- AUTO-GENERATED CONTENT START -->
-## 📋 Repository Contents
-📁 AWS_Cloud_Practioner_Dump/
+## 📋 Repository Tree
+```\n📁 DevOps-Playbook/\n📁 AWS_Cloud_Practioner_Dump/
 ├── 📁 CloudFormation-test/
 │   └── 📄 t2_nano.yml
 └── 📁 S3-Static-test/
@@ -35,7 +37,6 @@ This playbook is designed to:
     ├── 📄 main.tf
     └── 📄 README.md
 📄 README.md
-📄 update-readme.sh
-
+📄 update-readme.sh\n```\n
 > *This section is synced & automated with the DevOps Playbook.*
 <!-- AUTO-GENERATED CONTENT END -->

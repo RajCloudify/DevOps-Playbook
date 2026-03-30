@@ -91,15 +91,17 @@ AUTO_END="<!-- AUTO-GENERATED CONTENT END -->"
 # Generate the Contents section
 CONTENTS_SECTION=$(cat <<EOF
 $AUTO_START
-## 📋 Repository Contents
+## 📋 Repository Tree
 
 EOF
 )
 
-# Add directory tree
 CONTENTS_SECTION+=$'\n'
+CONTENTS_SECTION+="\`\`\`\n"
+CONTENTS_SECTION+="📁 $(basename "$REPO_ROOT")/\n"
 CONTENTS_SECTION+="$(generate_tree "$REPO_ROOT" 0)"
-CONTENTS_SECTION+=$'\n\n'
+CONTENTS_SECTION+="\n\`\`\`\n"
+CONTENTS_SECTION+=$'\n'
 CONTENTS_SECTION+=$(cat <<EOF
 > *This section is synced & automated with the DevOps Playbook.*
 $AUTO_END
