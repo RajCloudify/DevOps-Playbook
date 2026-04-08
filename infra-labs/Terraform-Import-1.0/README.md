@@ -6,7 +6,7 @@ This folder shows how to import existing AWS resources into Terraform state and 
 
 ## What this example includes
 
-- `main.tf` — Terraform resource configuration
+- `main.tf` — Terraform resource configuration 
 - `README.md` — process documentation
 
 ## Import workflow
